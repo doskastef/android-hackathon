@@ -22,18 +22,3 @@ public class BaseActivity extends AppCompatActivity{
 
 }
 
-    private void addJob(){
-
-        Intent intent=new Intent(StartActivity.this,LoginActivity.class);
-        intent.putExtra("type","addJob");
-        startActivity(intent);
-        finish();
-
-    }
-    private void findJob(){
-
-        Intent intent=new Intent(StartActivity.this, LoginActivity.class);
-        intent.putExtra("type","findJob");
-        startActivity(intent);
-        finish();
-    }

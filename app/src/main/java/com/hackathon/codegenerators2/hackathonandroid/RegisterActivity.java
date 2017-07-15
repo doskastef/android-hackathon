@@ -8,34 +8,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 /**
  * Created by Dusan on 7/15/2017.
  */
 
-public class LoginActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity {
 
-    private SharedPreferences sharedPreferences=null;
     private EditText userText=null;
     private EditText passwordText=null;
-
+    private RegisterActivity thisActivity=this;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_login);
-
-        userText=(EditText) findViewById(R.id.txtusername);
-        passwordText=(EditText) findViewById(R.id.txtpassword);
-        
-        
+        setContentView(R.layout.activity_register);
 
         sharedPreferences=getSharedPreferences("login",MODE_PRIVATE);
 
 
-        final Button loginButton=(Button) findViewById(R.id.buttonlogin);
-        
-        loginButton.setOnClickListener(new View.OnClickListener(){
+        final Button registerButton=(Button) findViewById(R.id.buttonRegister);
+
+        registerButton.setOnClickListener(new View.OnClickListener(){
 
 
             @Override
@@ -53,20 +48,35 @@ public class LoginActivity extends BaseActivity {
 
                     edi.putString("password", password);
                     edi.apply();
+
+                    RequestQueue queue=Volley.newRequestQueue(thisActivity);
+
+                    Intent intent=new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+
                 }
             }
         });
 
-                                         
-        
-        
 
-        
-        
+
+
+
+
+
+
 
 
 
 
 
     }
+
+
+
+
+
+
+
+
 }
